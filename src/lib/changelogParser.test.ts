@@ -1,3 +1,4 @@
+import rawChangelog from "../../CHANGELOG.md?raw";
 import { describe, it, expect } from "vitest";
 import { parseChangelog } from "./changelogParser";
 
@@ -127,5 +128,17 @@ describe("parseChangelog", () => {
     expect(result!.sections).toEqual([
       { kind: "Added", items: ["feature one", "feature two"] },
     ]);
+  });
+
+  // WhatsNewModal keys its sections by kind, so a repeated heading renders a
+  // duplicate React key and drops one of the two blocks.
+  it("gives each section kind at most once per version in the shipped changelog", () => {
+    const versions = [...rawChangelog.matchAll(/^## \[([^\]]+)\]/gm)].map((m) => m[1]);
+    expect(versions.length).toBeGreaterThan(0);
+
+    for (const version of versions) {
+      const kinds = parseChangelog(rawChangelog, version)!.sections.map((s) => s.kind);
+      expect(new Set(kinds).size, `duplicate section kind in ${version}`).toBe(kinds.length);
+    }
   });
 });
