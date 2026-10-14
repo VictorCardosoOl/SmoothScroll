@@ -40,7 +40,7 @@ export function LocalizedHowItWorksPage({ locale, dictionary: d }: LocalizedHowI
         {locale === 'en' && <SearchIntentGuides />}
         <FinalCTA finalCta={h.finalCta} />
       </main>
-      <Footer />
+      <Footer pageKind="how-it-works" />
     </>
   )
 }

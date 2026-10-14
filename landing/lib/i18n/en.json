@@ -384,10 +384,25 @@
   },
   "footer": {
     "taglineWindows": "Smooth scroll for Windows.",
+    "copyright": "© 2026 SmoothScroll.",
+    "madeBy": "Made by Nguyễn Quang Trường in Ho Chi Minh City.",
     "links": {
       "github": "GitHub",
       "license": "License",
       "privacy": "Privacy"
+    },
+    "headings": {
+      "product": "Product",
+      "guides": "Guides",
+      "project": "Project"
+    },
+    "product": {
+      "howItWorks": "How it works",
+      "install": "Download",
+      "faq": "FAQ"
+    },
+    "project": {
+      "issues": "Report an issue"
     }
   },
   "langSwitcher": {

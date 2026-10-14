@@ -79,7 +79,9 @@ export function IntentLandingPage({ page }: { page: IntentPage }) {
     <>
       <IntentJsonLd page={page} />
       <BackgroundDotGrid />
-      <Navigation locale="en" />
+      {/* Intent pages ship English-only, so both language menus fall back to the localized
+          home page: no translation of this page exists to switch to. */}
+      <Navigation locale="en" pageKind="home" />
       <main id="main-content" className="relative flex-1">
         <section className="container pb-16 pt-28 sm:pb-20">
           <div className="mx-auto max-w-4xl">
@@ -155,7 +157,7 @@ export function IntentLandingPage({ page }: { page: IntentPage }) {
 
         <SearchIntentGuides currentSlug={page.slug} />
       </main>
-      <Footer />
+      <Footer pageKind="home" />
     </>
   )
 }

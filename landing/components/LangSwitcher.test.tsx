@@ -36,4 +36,34 @@ describe('LangSwitcher', () => {
       '/zh/how-it-works',
     ])
   })
+
+  it('closes when clicking outside', async () => {
+    const user = userEvent.setup()
+    const { container } = render(
+      <>
+        <LangSwitcher pageKind="home" />
+        <button type="button">outside</button>
+      </>,
+    )
+    const details = container.querySelector('details')
+
+    await user.click(screen.getByText('EN'))
+    expect(details).toHaveAttribute('open')
+
+    await user.click(screen.getByRole('button', { name: 'outside' }))
+    expect(details).not.toHaveAttribute('open')
+  })
+
+  it('closes on Escape and returns focus to the summary', async () => {
+    const user = userEvent.setup()
+    const { container } = render(<LangSwitcher pageKind="home" />)
+    const details = container.querySelector('details')
+
+    await user.click(screen.getByText('EN'))
+    expect(details).toHaveAttribute('open')
+
+    await user.keyboard('{Escape}')
+    expect(details).not.toHaveAttribute('open')
+    expect(details?.querySelector('summary')).toHaveFocus()
+  })
 })

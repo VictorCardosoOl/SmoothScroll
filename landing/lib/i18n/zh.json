@@ -317,7 +317,22 @@
       "license": "许可证",
       "privacy": "隐私"
     },
-    "taglineWindows": "Windows 流畅滚动。"
+    "taglineWindows": "Windows 流畅滚动。",
+    "copyright": "© 2026 SmoothScroll.",
+    "madeBy": "由 Nguyễn Quang Trường 在胡志明市制作。",
+    "headings": {
+      "product": "产品",
+      "guides": "指南",
+      "project": "项目"
+    },
+    "product": {
+      "howItWorks": "工作原理",
+      "install": "下载",
+      "faq": "问答"
+    },
+    "project": {
+      "issues": "报告问题"
+    }
   },
   "langSwitcher": {
     "en": "English",
