@@ -3,11 +3,18 @@ name: CI Build (feature branches)
 # Dry-run release builds for feature branches without bumping version or
 # publishing artifacts. Push to ci/** to validate macOS + Windows compile
 # before merging to master (which auto-releases).
+#
+# pull_request runs the fast jobs (Build WASM -> Lint + Test) so the
+# "Lint + Test" check can gate merges via the master ruleset. The heavy
+# platform builds still run but are not required checks.
 
 on:
   push:
     branches:
       - 'ci/**'
+  pull_request:
+    branches:
+      - master
 
 # Cancel in-progress runs for same branch
 concurrency:
