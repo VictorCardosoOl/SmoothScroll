@@ -312,10 +312,25 @@
   },
   "footer": {
     "taglineWindows": "Cuộn mượt cho Windows.",
+    "copyright": "© 2026 SmoothScroll.",
+    "madeBy": "Được phát triển bởi Nguyễn Quang Trường tại TP. Hồ Chí Minh.",
     "links": {
       "github": "GitHub",
       "license": "Giấy phép",
       "privacy": "Quyền riêng tư"
+    },
+    "headings": {
+      "product": "Sản phẩm",
+      "guides": "Hướng dẫn",
+      "project": "Dự án"
+    },
+    "product": {
+      "howItWorks": "Cách hoạt động",
+      "install": "Tải về",
+      "faq": "Hỏi đáp"
+    },
+    "project": {
+      "issues": "Báo lỗi"
     }
   },
   "langSwitcher": {

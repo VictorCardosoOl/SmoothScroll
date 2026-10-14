@@ -61,7 +61,7 @@ export function LocalizedPrivacyPage({ locale, dictionary: d }: LocalizedPrivacy
           </div>
         </article>
       </main>
-      <Footer />
+      <Footer pageKind="privacy" />
     </>
   )
 }

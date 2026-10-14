@@ -115,10 +115,25 @@ export interface Dictionary {
   footer?: {
     tagline?: string
     taglineWindows?: string
+    copyright?: string
+    madeBy?: string
     links?: {
       github?: string
       license?: string
       privacy?: string
+    }
+    headings?: {
+      product?: string
+      guides?: string
+      project?: string
+    }
+    product?: {
+      howItWorks?: string
+      install?: string
+      faq?: string
+    }
+    project?: {
+      issues?: string
     }
   }
   howItWorks?: {

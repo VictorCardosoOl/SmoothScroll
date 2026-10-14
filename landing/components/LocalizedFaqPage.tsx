@@ -60,7 +60,7 @@ export function LocalizedFaqPage({ locale, dictionary: d }: LocalizedFaqPageProp
         <FAQ dict={{ faq: d.faq }} />
         <FinalCTA dict={{ finalCta: d.finalCta }} />
       </main>
-      <Footer />
+      <Footer pageKind="faq" />
     </>
   )
 }

@@ -7,12 +7,91 @@ Versioning: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+## [1.35.1] - 2026-10-08
+
+### Fixed
+- skip windows-only examples in cargo test
+- re-check macOS permission per retry, gate hook tests in CI
+- route non-Windows wheel events through route_wheel_event
+- stop forwarding --no-bundle to cargo instead of tauri CLI
+- log and retry mouse hook install failures instead of swallowing them
+## [1.35.0] - 2026-10-08
+
 ### Added
+- unify back-to-home navigation across landing pages
+- add localized privacy policy pages
+
+### Fixed
+- surface hotkey_error on import and debounced saves
+- route non-Windows wheel events through route_wheel_event
+- stop forwarding --no-bundle to cargo instead of tauri CLI
+- stop reporting persisted settings as unsaved when hotkey registration fails
+## [1.34.0] - 2026-09-27
+
+### Added
+- turn horizontal-wheel and zoom smoothing off by default on update
+- route discrete-wheel apps like REAPER to whole-notch output
+- classify touchpads by OS marker and delta-magnitude evidence
+- default window timing scheduler with legacy kill-switch
+- add exactly-conservative window payout model
+- add engine timing switch and discrete-wheel app settings
+- picker dropdown rows show app icons
+- game icons and game picker in Game Mode
+- expand FAQ to 31 questions with dedicated faq pages
+
+### Fixed
+- reset scroll axes when the timing scheduler changes
+- game picker no longer crashes on malformed shortcuts
+
+### Performance
+- instant picker icons via disk cache and chunked loading
+## [1.33.1] - 2026-09-14
+
+### Fixed
+- restore browser scroll behavior
+## [1.33.0] - 2026-09-14
+
+### Added
+- export settings via native save dialog
+- add Buy Me a Coffee donation button
+- show total download count
+- expand SEO search intent signals
+
+### Fixed
+- harden settings and toggle state
+- translate remaining hardcoded English strings across all locales
+## [1.32.0] - 2026-09-03
+
+### Added
+- preserve whole wheel notches
+- expose wheel semantic policies
+- migrate semantic wheel policies
+- emit semantic wheel pulses
+- define semantic wheel policies
+- define semantic wheel events
+- add Buy Me a Coffee donation option
 - add explicit Shift + Wheel conversion and wheel compatibility modes
 
 ### Changed
 - preserve Ctrl, Shift, Alt, and physical horizontal wheel semantics while smoothing
 - use native touchpad behavior when touchpad smoothing is disabled
+
+### Fixed
+- localize remaining user-facing text
+- optimize semantic wheel dispatch and discrete controls
+- finalize semantic wheel review corrections
+- revalidate horizontal owner before dispatch
+- limit game mode to known games
+- dispatch captured semantic frames directly
+- isolate stale semantic frame failures
+- reject stale semantic frame emissions
+- validate semantic frames before emission
+- share one axis generation store
+- keep cross-platform emitters compiling
+- gate tauri zoom on isolated platform modifier
+- keep zoom pulses on legacy emitters
+- apply reverse direction to shift conversion
+- capture wheel modifiers at event boundary
 
 ## [1.31.0] - 2026-08-31
 
@@ -216,6 +295,7 @@ Versioning: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 - app_profiles_lookup O(1) helper, patch is_excluded + get_profile_for_process
 - canonicalize_process_name pure helper
 - ScrollProfile.max_velocity field + default + clamp
+- ProfileEditor: Apply preset… popover with overwrite confirmation
 
 ### Fixed
 - dismiss operation notifications on click
@@ -234,10 +314,6 @@ Versioning: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 - remove deprecated baseUrl from tsconfig, use paths with bundler resolution
 - add max_velocity to test mock, ignoreDeprecations for baseUrl
 - resolve_active uses app_profiles_lookup, unassign routes through assign_profile
-### Added
-- ProfileEditor: Apply preset… popover with overwrite confirmation
-
-### Fixed
 - Per-app profile easing and tail-to-head ratio now persist through scroll drain
 
 ## [1.23.0] - 2026-07-13
@@ -1018,7 +1094,7 @@ Versioning: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 - macOS builds unsigned (no Apple Developer ID yet). Users must allow via Gatekeeper.
 - macOS auto-update disabled in beta channel until code-signing is set up.
 
-## [0.1.0] — 2026-05-16
+## [0.1.0] - 2026-05-16
 
 ### Added (M8 — Hardening + Installer)
 
@@ -1084,7 +1160,7 @@ Versioning: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 - `timeBeginPeriod(1)` RAII guard
 - Tray icon with Enable toggle and Exit
 
-## [0.1.0] — 2026-05-14
+## [0.1.0] - 2026-05-14
 
 ### Added
 

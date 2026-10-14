@@ -35,8 +35,6 @@ Versioning: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 ### Fixed
 - surface hotkey_error on import and debounced saves
 - route non-Windows wheel events through route_wheel_event
-- route non-Windows wheel events through route_wheel_event
-- stop forwarding --no-bundle to cargo instead of tauri CLI
 - stop forwarding --no-bundle to cargo instead of tauri CLI
 - stop reporting persisted settings as unsaved when hotkey registration fails
 ## [1.34.0] - 2026-09-27
@@ -83,6 +81,11 @@ Versioning: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 - define semantic wheel policies
 - define semantic wheel events
 - add Buy Me a Coffee donation option
+- add explicit Shift + Wheel conversion and wheel compatibility modes
+
+### Changed
+- preserve Ctrl, Shift, Alt, and physical horizontal wheel semantics while smoothing
+- use native touchpad behavior when touchpad smoothing is disabled
 
 ### Fixed
 - localize remaining user-facing text
@@ -100,12 +103,6 @@ Versioning: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 - keep zoom pulses on legacy emitters
 - apply reverse direction to shift conversion
 - capture wheel modifiers at event boundary
-### Added
-- add explicit Shift + Wheel conversion and wheel compatibility modes
-
-### Changed
-- preserve Ctrl, Shift, Alt, and physical horizontal wheel semantics while smoothing
-- use native touchpad behavior when touchpad smoothing is disabled
 
 ## [1.31.0] - 2026-08-31
 
@@ -309,6 +306,7 @@ Versioning: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 - app_profiles_lookup O(1) helper, patch is_excluded + get_profile_for_process
 - canonicalize_process_name pure helper
 - ScrollProfile.max_velocity field + default + clamp
+- ProfileEditor: Apply preset… popover with overwrite confirmation
 
 ### Fixed
 - dismiss operation notifications on click
@@ -327,10 +325,6 @@ Versioning: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 - remove deprecated baseUrl from tsconfig, use paths with bundler resolution
 - add max_velocity to test mock, ignoreDeprecations for baseUrl
 - resolve_active uses app_profiles_lookup, unassign routes through assign_profile
-### Added
-- ProfileEditor: Apply preset… popover with overwrite confirmation
-
-### Fixed
 - Per-app profile easing and tail-to-head ratio now persist through scroll drain
 
 ## [1.23.0] - 2026-07-13
@@ -1111,7 +1105,7 @@ Versioning: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 - macOS builds unsigned (no Apple Developer ID yet). Users must allow via Gatekeeper.
 - macOS auto-update disabled in beta channel until code-signing is set up.
 
-## [0.1.0] — 2026-05-16
+## [0.1.0] - 2026-05-16
 
 ### Added (M8 — Hardening + Installer)
 
@@ -1177,7 +1171,7 @@ Versioning: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 - `timeBeginPeriod(1)` RAII guard
 - Tray icon with Enable toggle and Exit
 
-## [0.1.0] — 2026-05-14
+## [0.1.0] - 2026-05-14
 
 ### Added
 
