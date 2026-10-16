@@ -52,7 +52,7 @@ export function initI18n(initialLang: Lang) {
       ru: { translation: ru },
     },
     lng: initialLang,
-    fallbackLng: "en",
+    fallbackLng: "pt-BR",
     interpolation: { escapeValue: false },
   });
 }

@@ -47,8 +47,8 @@ pub enum WheelOutputMode {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize, Default)]
 #[serde(rename_all = "lowercase")]
 pub enum EngineTiming {
-    #[default]
     Windows,
+    #[default]
     Legacy,
 }
 
@@ -238,12 +238,12 @@ impl ScrollProfile {
         Self {
             id: id.into(),
             name: name.into(),
-            step_size_px: 144,
-            animation_time_ms: 220,
-            acceleration_max: 10,
-            tail_to_head_ratio: 5,
+            step_size_px: 100,
+            animation_time_ms: 500,
+            acceleration_max: 4,
+            tail_to_head_ratio: 3,
             animation_easing: true,
-            easing_mode: EasingMode::QuinticOut,
+            easing_mode: EasingMode::CubicOut,
             reverse_wheel_direction: false,
             horizontal_smoothness: false,
             shift_wheel_behavior: ShiftWheelBehavior::Preserve,
@@ -271,9 +271,9 @@ impl ScrollProfile {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(default)]
 pub struct ModifierPassthrough {
-    #[serde(default = "default_false")]
+    #[serde(default = "default_true")]
     pub ctrl: bool,
-    #[serde(default = "default_false")]
+    #[serde(default = "default_true")]
     pub alt: bool,
     #[serde(default = "default_true")]
     pub clear_inertia_on_press: bool,
@@ -290,8 +290,8 @@ fn default_false() -> bool {
 impl Default for ModifierPassthrough {
     fn default() -> Self {
         Self {
-            ctrl: false,
-            alt: false,
+            ctrl: true,
+            alt: true,
             clear_inertia_on_press: true,
         }
     }
@@ -433,14 +433,14 @@ impl Default for AppSettings {
         Self {
             settings_schema_version: CURRENT_SETTINGS_SCHEMA_VERSION,
             enabled: true,
-            step_size_px: 144,
-            animation_time_ms: 220,
+            step_size_px: 100,
+            animation_time_ms: 500,
             animation_time_enabled: true,
-            acceleration_max: 10,
-            max_velocity: 20.0,
-            tail_to_head_ratio: 5,
+            acceleration_max: 4,
+            max_velocity: 14.0,
+            tail_to_head_ratio: 3,
             animation_easing: true,
-            easing_mode: EasingMode::QuinticOut,
+            easing_mode: EasingMode::CubicOut,
             horizontal_smoothness: false,
             shift_wheel_behavior: ShiftWheelBehavior::Preserve,
             wheel_output_mode: WheelOutputMode::SmoothPulses,
@@ -449,7 +449,7 @@ impl Default for AppSettings {
             direction_sync_enabled: false,
             start_with_os: false,
             start_minimized: true,
-            language: "en".to_string(),
+            language: "pt-BR".to_string(),
             theme: ThemeMode::System,
             enable_global_hotkey: true,
             hotkey_accelerator: "Ctrl+Alt+S".to_string(),
@@ -509,7 +509,7 @@ impl AppSettings {
             "en", "vi", "zh", "fr", "de", "hi", "id", "it", "ja", "ko", "pt-BR", "es", "tr", "ru",
         ];
         if !KNOWN_LANGS.contains(&self.language.as_str()) {
-            self.language = "en".to_string();
+            self.language = "pt-BR".to_string();
         }
 
         if !is_valid_accelerator(&self.hotkey_accelerator) {
@@ -1091,10 +1091,10 @@ pub fn migrate_raw_settings(
         {
             modifiers
                 .entry("ctrl".to_string())
-                .or_insert_with(|| serde_json::json!(false));
+                .or_insert_with(|| serde_json::json!(true));
             modifiers
                 .entry("alt".to_string())
-                .or_insert_with(|| serde_json::json!(false));
+                .or_insert_with(|| serde_json::json!(true));
         }
 
         root.insert(

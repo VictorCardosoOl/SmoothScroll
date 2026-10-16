@@ -48,14 +48,14 @@ initSentry();
 tagPlatform();
 
 async function bootstrap() {
-  let lang: Lang = "en";
+  let lang: Lang = "pt-BR";
   try {
     const settings = await tauri.getSettings();
     if (SUPPORTED_LANGS.includes(settings.language as Lang)) {
       lang = settings.language as Lang;
     }
   } catch (e) {
-    console.warn("getSettings failed at bootstrap; using en", e);
+    console.warn("getSettings failed at bootstrap; using pt-BR", e);
   }
   initI18n(lang);
 

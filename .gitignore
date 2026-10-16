@@ -39,6 +39,7 @@ scripts/
 
 .cursor/
 .superpowers/
+.agents/
 
 # Environment
 .env

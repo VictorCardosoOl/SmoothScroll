@@ -126,8 +126,11 @@ fn payout_frac(u: f64, params: &PayoutParams, eased: bool) -> f64 {
 /// (nearly) an integer — otherwise the constant rate is already flat and
 /// easing only adds ripple. Band 0.08 is the measured optimum (see spec §5.2).
 pub fn payout_ease_for(gap_ms: f64, window_ms: f64) -> bool {
-    if !(gap_ms > 0.0) || !(window_ms > 0.0) || gap_ms >= window_ms {
+    if !(window_ms > 0.0) {
         return false;
+    }
+    if gap_ms <= 0.0 || gap_ms >= window_ms {
+        return true;
     }
     let ratio = window_ms / gap_ms;
     let nearest = if ratio - ratio.floor() < 0.5 { ratio.floor() } else { ratio.ceil() };
